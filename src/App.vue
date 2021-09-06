@@ -1,17 +1,28 @@
+/* eslint-disable vue/require-v-for-key */
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="row">
+          <Courses />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Courses from './components/Courses.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Courses
+  },
+  data() {
+    return {
+      
+    };
+  },
+  methods: {},
+};
 </script>
 
 <style>
