@@ -4,17 +4,24 @@
     <div class="row">
           <Courses />
     </div>
+    <Footer>
+      <div class="text-center p-3"> © 2020 Copyright:
+            <a class="" href="http://localhost:8080/">Zouhair ETTARAK</a>
+        </div>
+    </Footer>
   </div>
 </template>
 
 <script>
 
 import Courses from './components/Courses.vue';
+import Footer from './components/shared/Footer';
 
 export default {
   name: "App",
   components: {
-    Courses
+    Courses,
+    Footer
   },
   data() {
     return {
