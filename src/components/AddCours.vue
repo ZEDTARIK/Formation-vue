@@ -39,6 +39,9 @@
                 let title = this.$refs.Title.value;
                 let photo = this.$refs.Photo.value;
 
+                if(title == "" || photo == "") {
+                    return;
+                }
                 const course = {
                     title,
                     photo

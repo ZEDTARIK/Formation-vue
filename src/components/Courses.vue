@@ -1,18 +1,32 @@
 <template lang="">
 
 
-    <div class="col-md-6 mx-auto">
-        <AddCours @add="addNewCourse($event)" />
-    </div>
-
-    <div class="col-md-12 my-3">
-        <div class="text-center">
-            <h3>List of Courses </h3>
+    <div class="row" v-if="showForm">
+        <div class="col-md-6 mx-auto">
+            <AddCours @add="addNewCourse($event)" />
         </div>
     </div>
 
-    <div class="col-md-3" v-for="course in ListCourses" :key="course.id">
-        <OneCourse :course="course" @delete="deleteCourse($event)" />
+    <div class="row my-3">
+        <div class="col-md-6">
+            <h4>List of Courses </h4>
+        </div>
+        <div class="col-md-6 text-right">
+            <button @click="DisplayForm()" 
+                    class="btn btn-sm" 
+                    :class="{
+                        'btn-outline-success': !showForm,
+                        'btn-dark': showForm
+                    }">
+                {{ showForm ? 'Close' : 'Add New' }}
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" v-for="course in ListCourses" :key="course.id">
+            <OneCourse :course="course" @delete="deleteCourse($event)" />
+        </div>
     </div>
 
 
@@ -29,6 +43,7 @@
         props: [],
         data() {
             return {
+                showForm: false,
                 ListCourses: [
                     { id: 1, title: "Learn Spring Boot", photo: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/5miGPBu8RbCSc4hCzN39" },
                     { id: 2, title: "Learn Angular", photo: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/nrOHB2iQTIiGe7hHX9O0" },
@@ -44,6 +59,10 @@
             },
             addNewCourse(course) {
                 this.ListCourses = [course, ...this.ListCourses];
+                this.showForm = false;
+            },
+            DisplayForm() {
+                this.showForm = !this.showForm;
             }
         },
     };

@@ -1,9 +1,7 @@
 /* eslint-disable vue/require-v-for-key */
 <template>
   <div class="container">
-    <div class="row">
-          <Courses />
-    </div>
+    <Courses />
     <Footer>
       <div class="text-center p-3"> © 2020 Copyright:
             <a class="" href="http://localhost:8080/">Zouhair ETTARAK</a>
