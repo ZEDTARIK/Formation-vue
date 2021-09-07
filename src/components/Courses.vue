@@ -1,7 +1,13 @@
 <template lang="">
-    <div class="col-md-12">
+
+
+    <div class="col-md-6 mx-auto">
+        <AddCours @add="addNewCourse($event)" />
+    </div>
+
+    <div class="col-md-12 my-3">
         <div class="text-center">
-            <h3>List of Courses : </h3>
+            <h3>List of Courses </h3>
         </div>
     </div>
 
@@ -9,13 +15,16 @@
         <OneCourse :course="course" @delete="deleteCourse($event)" />
     </div>
 
+
 </template>
 <script>
 
     import OneCourse from './OneCourse.vue';
+    import AddCours from './AddCours'
     export default {
         components: {
-            OneCourse
+            OneCourse,
+            AddCours
         },
         props: [],
         data() {
@@ -32,6 +41,9 @@
         methods: {
             deleteCourse(id) {
                 this.ListCourses = this.ListCourses.filter(course => course.id != id);
+            },
+            addNewCourse(course) {
+                this.ListCourses = [course, ...this.ListCourses];
             }
         },
     };
